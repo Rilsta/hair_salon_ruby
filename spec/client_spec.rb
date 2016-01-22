@@ -43,9 +43,9 @@ describe(Client) do
 
   describe('.update') do
     it('updates user information') do
-      test_client = Client.new({id: nil, name: "Dominique Diaz", stylist_id: 1})
+      test_client = Client.new({id: nil, "name" => "Dominique Diaz", stylist_id: 1})
       test_client.save
-      test_client.update({id: nil, name: "Fred"})
+      test_client.update({id: nil, "name" => "Fred"})
       expect(test_client.name).to(eq("Fred"))
     end
   end

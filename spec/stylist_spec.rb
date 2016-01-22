@@ -45,7 +45,7 @@ describe(Stylist) do
     it('updates user information') do
       test_stylist = Stylist.new({id: nil, name: "Estaban Diego Gonzalez Delgato Cortez"})
       test_stylist.save
-      test_stylist.update({name: "Fred"})
+      test_stylist.update({"name" => "Fred"})
       expect(test_stylist.name).to(eq("Fred"))
     end
   end

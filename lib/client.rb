@@ -2,7 +2,7 @@ class Client
   attr_reader(:id, :name, :stylist_id)
 
   def initialize(attributes)
-    @id = attributes.fetch(:id)
+    @id = attributes.fetch(:id).to_i
     @name = attributes.fetch(:name)
     @stylist_id = attributes.fetch(:stylist_id)
   end

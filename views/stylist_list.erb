@@ -1,7 +1,15 @@
-<h1>Here's all those adorable employees.</h1>
+<div class="container">
+<h1>Here's all those adorable stylists!</h1>
 
 <ul>
   <% @stylists.each do |stylist| %>
-    <li><%= stylist.name %></li>
+    <li>
+      <a href="/frollicle/view_stylists/<%= stylist.id %>"><%= stylist.name %></a>
+      <a href="/frollicle/view_stylists/edit/<%= stylist.id %>"><button>Edit</button></a>
+      <a href="/frollicle/view_stylists/delete/<%= stylist.id %>"><button>Delete</button></a>
+    </li>
   <% end %>
 </ul>
+
+<a href="/">Home</a>
+</div>

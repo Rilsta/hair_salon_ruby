@@ -1,0 +1,28 @@
+<div class= "container">
+<h1><%= @stylist.name %></h1>
+
+<a href="/">Home</a>
+
+  <h3>Clients:</h3>
+
+  <ul>
+    <% @stylist.client.each do |client| %>
+      <li>
+        <%= client.name() %>
+       <a href="/frollicle/view_clients/edit/<%= client.id %>"><button>Edit</button></a>
+       <a href="/frollicle/view_clients/delete/<%= client.id %>"><button>Delete</button></a>
+      </li>
+    <% end %>
+  </ul>
+
+
+  <form action='/frollicle/add_clients/new' method='post'>
+    <div class="form-group">
+      <input type="hidden" name="stylist_id" id="stylist_id" value="<%=@stylist.id%>">
+      <label>Type their name here, babe:</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>

@@ -33,13 +33,25 @@ class Stylist
   end
 
   def update(name)
-    @name = name.fetch(:name)
+    @name = name.fetch("name")
     @id = self.id
     DB.exec("UPDATE stylists SET (name) = ('#{@name}') WHERE id = '#{@id}';")
   end
 
   def delete
     DB.exec("DELETE FROM stylists WHERE id = '#{self.id}';")
+  end
+
+  def client
+    stylist_clients = []
+    clients = DB.exec("SELECT * FROM clients WHERE stylist_id = '#{self.id()}';")
+    clients.each do |client|
+      name = client.fetch("client")
+      stylist_id = client.fetch('stylist_id').to_i
+      id = client.fetch('id').to_i
+      stylist_clients << Client.new({name: name, id: id, stylist_id: stylist_id})
+    end
+    stylist_clients
   end
 
   def ==(another_stylist)

@@ -32,6 +32,16 @@ class Stylist
     found_stylist
   end
 
+  def update(name)
+    @name = name.fetch(:name)
+    @id = self.id
+    DB.exec("UPDATE stylists SET (name) = ('#{@name}') WHERE id = '#{@id}';")
+  end
+
+  def delete
+    DB.exec("DELETE FROM stylists WHERE id = '#{self.id}';")
+  end
+
   def ==(another_stylist)
     self.name == (another_stylist.name) &&
     (self.id == (another_stylist.id))

@@ -42,11 +42,23 @@ describe(Stylist) do
   end
 
   describe('.update') do
-
+    it('updates user information') do
+      test_stylist = Stylist.new({id: nil, name: "Estaban Diego Gonzalez Delgato Cortez"})
+      test_stylist.save
+      test_stylist.update({name: "Fred"})
+      expect(test_stylist.name).to(eq("Fred"))
+    end
   end
 
   describe('.delete') do
-
+    it('deletes a stylist') do
+      test_stylist = Stylist.new({id: nil, name: "Estaban Diego Gonzalez Delgato Cortez"})
+      test_stylist.save
+      test_stylist2 = Stylist.new({id: nil, name: "Patricia The Biz Martinez"})
+      test_stylist2.save
+      test_stylist.delete
+      expect(Stylist.all).to(eq([test_stylist2]))
+    end
   end
 
   describe('#==') do

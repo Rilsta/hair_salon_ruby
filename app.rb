@@ -62,7 +62,6 @@ post('/frollicle/add_clients/new') do
   name = params.fetch('name')
   stylist_id = params.fetch('stylist_id')
   @stylist = Stylist.find(stylist_id).to_i
-  binding.pry
   @client = Client.new({:id => nil, :name => name, :stylist_id => stylist_id})
   @client.save
   erb(:success2)

@@ -8,4 +8,10 @@ describe(Stylist) do
       expect(test_stylist.name).to(eq("Estaban Diego Gonzalez Delgato Martinez"))
     end
   end
+
+  describe('.all') do
+    it('is empty at first') do
+      expect(Stylist.all).to(eq([]))
+    end
+  end
 end

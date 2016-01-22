@@ -78,7 +78,7 @@ post('/frollicle/view_clients/client_update/:id') do
   redirect ('/frollicle/view_stylists')
 end
 
-get('/frollicle/view_stylists/delete/:id') do
+get('/frollicle/view_clients/delete/:id') do
   @client = Client.find(params[:id].to_i)
   @client.delete
    redirect ('/frollicle/view_stylists')

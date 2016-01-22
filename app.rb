@@ -67,29 +67,19 @@ post('/frollicle/add_clients/new') do
   erb(:success2)
 end
 
-# get('/frollicle/view_stylists') do
-#   @stylists = Stylist.all
-#   erb(:stylist_list)
-# end
-#
-# get('/frollicle/view_stylists/:id') do
-#   @stylist = Stylist.find(params[:id].to_i)
-#   erb(:stylist)
-# end
-#
-# get('/frollicle/view_stylists/edit/:id') do
-#   @stylist = Stylist.find(params[:id].to_i)
-#   erb(:update_stylist)
-# end
-#
-# post('/frollicle/view_stylists/stylist_update/:id') do
-#   @stylist = Stylist.find(params[:id].to_i)
-#   @stylist.update(params)
-#   redirect ('/frollicle/view_stylists')
-# end
-#
-# get('/frollicle/view_stylists/delete/:id') do
-#   @stylist = Stylist.find(params[:id].to_i)
-#   @stylist.delete
-#    redirect ('/frollicle/view_stylists')
-# end
+get('/frollicle/view_clients/edit/:id') do
+  @client = Client.find(params[:id].to_i)
+  erb(:update_client)
+end
+
+post('/frollicle/view_clients/client_update/:id') do
+  @client = Client.find(params[:id].to_i)
+  @client.update(params)
+  redirect ('/frollicle/view_stylists')
+end
+
+get('/frollicle/view_stylists/delete/:id') do
+  @client = Client.find(params[:id].to_i)
+  @client.delete
+   redirect ('/frollicle/view_stylists')
+end

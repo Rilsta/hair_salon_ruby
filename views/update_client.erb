@@ -1,0 +1,12 @@
+<div class= "container">
+  <h1>Let's shake things up</h1>
+
+  <form action='/frollicle/view_clients/client_update/<%= @client.id %>' method='post'>
+    <div class="form-group">
+      <label>Fix your mistakes:</label>
+      <input type="text" class="form-control" id="name" name="name" Value='<%= @client.name %>'>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>

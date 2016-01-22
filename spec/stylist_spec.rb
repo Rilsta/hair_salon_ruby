@@ -14,4 +14,20 @@ describe(Stylist) do
       expect(Stylist.all).to(eq([]))
     end
   end
+
+  describe('#save') do
+    it('saves input and pushes to an array') do
+      test_stylist = Stylist.new({id: nil, name: "Estaban Diego Gonzalez Delgato Martinez"})
+      test_stylist.save
+      expect(Stylist.all).to(eq([test_stylist]))
+    end
+  end
+
+  describe('#==') do
+    it('is the same stylist if information is the same') do
+      test_stylist = Stylist.new({id: nil, name: "Estaban Diego Gonzalez Delgato Martinez"})
+      test_stylist2 = Stylist.new({id: nil, name: "Estaban Diego Gonzalez Delgato Martinez"})
+      expect(test_stylist).to(eq(test_stylist2))
+    end
+  end
 end

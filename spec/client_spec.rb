@@ -4,7 +4,7 @@ describe(Client) do
   describe('#id, #name') do
     it('returns information when entered into class') do
       test_client = Client.new({id: nil, name: "Dominique Diaz", stylist_id: 1})
-      expect(test_client.id).to(eq(nil))
+      expect(test_client.id).to(be_an_instance_of(Fixnum))
       expect(test_client.name).to(eq("Dominique Diaz"))
     end
   end
@@ -43,7 +43,7 @@ describe(Client) do
 
   describe('.update') do
     it('updates user information') do
-      test_client = Client.new({id: nil, "name" => "Dominique Diaz", stylist_id: 1})
+      test_client = Client.new({id: nil, :name => "Dominique Diaz", stylist_id: 1})
       test_client.save
       test_client.update({id: nil, "name" => "Fred"})
       expect(test_client.name).to(eq("Fred"))

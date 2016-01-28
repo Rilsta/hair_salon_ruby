@@ -10,7 +10,10 @@
       <li>
         <%= client.name() %>
        <a href="/frollicle/view_clients/edit/<%= client.id %>"><button>Edit</button></a>
-       <a href="/frollicle/view_clients/delete/<%= client.id %>"><button>Delete</button></a>
+       <form class="form-inline" form action="/frollicle/view_clients/delete/<%= client.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <button type="submit" class="btn btn-danger">Delete</button>
+       </form>
       </li>
     <% end %>
   </ul>

@@ -39,16 +39,16 @@ get('/frollicle/view_stylists/edit/:id') do
   erb(:update_stylist)
 end
 
-post('/frollicle/view_stylists/stylist_update/:id') do
+patch('/frollicle/view_stylists/stylist_update/:id') do
   @stylist = Stylist.find(params[:id].to_i)
   @stylist.update(params)
   redirect ('/frollicle/view_stylists')
 end
 
-get('/frollicle/view_stylists/delete/:id') do
+delete('/frollicle/view_stylists/delete/:id') do
   @stylist = Stylist.find(params[:id].to_i)
   @stylist.delete
-   redirect ('/frollicle/view_stylists')
+  redirect ('/frollicle/view_stylists')
 end
 
 ###############Clients
@@ -72,7 +72,7 @@ get('/frollicle/view_clients/edit/:id') do
   erb(:update_client)
 end
 
-post('/frollicle/view_clients/client_update/:id') do
+patch('/frollicle/view_clients/client_update/:id') do
   @client = Client.find(params[:id].to_i)
   @client.update(params)
   redirect ('/frollicle/view_stylists')

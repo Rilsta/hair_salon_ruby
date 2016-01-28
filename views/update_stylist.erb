@@ -2,6 +2,7 @@
   <h1>Let's shake things up</h1>
 
   <form action='/frollicle/view_stylists/stylist_update/<%= @stylist.id %>' method='post'>
+    <input name="_method" type="hidden" value="patch">
     <div class="form-group">
       <label>Fix your mistakes:</label>
       <input type="text" class="form-control" id="name" name="name" Value='<%= @stylist.name %>'>

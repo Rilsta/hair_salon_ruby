@@ -1,7 +1,7 @@
 <div class= "container">
   <h1>Let's shake things up</h1>
 
-  <form action='/frollicle/view_stylists/stylist_update/<%= @stylist.id %>' method='post'>
+  <form action='/stylists/<%= @stylist.id %>' method='post'>
     <input name="_method" type="hidden" value="patch">
     <div class="form-group">
       <label>Fix your mistakes:</label>

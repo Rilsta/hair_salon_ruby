@@ -9,8 +9,8 @@
     <% @stylist.client.each do |client| %>
       <li>
         <%= client.name() %>
-       <a href="/frollicle/view_clients/edit/<%= client.id %>"><button>Edit</button></a>
-       <form class="form-inline" form action="/frollicle/view_clients/delete/<%= client.id %>" method="post">
+       <a href="/clients/<%= client.id %>/edit"><button>Edit</button></a>
+       <form class="form-inline" form action="/clients/<%= client.id %>/delete" method="post">
           <input type="hidden" name="_method" value="delete">
           <button type="submit" class="btn btn-danger">Delete</button>
        </form>
@@ -19,7 +19,7 @@
   </ul>
 
 
-  <form action='/frollicle/add_clients/new' method='post'>
+  <form action='/clients' method='post'>
     <div class="form-group">
       <input type="hidden" name="stylist_id" id="stylist_id" value="<%=@stylist.id%>">
       <label>Type their name here, babe:</label>

@@ -34,8 +34,8 @@ class Client
     found_client
   end
 
-  def update(name)
-    @name = name.fetch("name")
+  def update(attributes)
+    @name = attributes.fetch(:name)
     @id = self.id
     DB.exec("UPDATE clients SET (name) = ('#{@name}') WHERE id = '#{@id}';")
   end

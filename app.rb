@@ -13,52 +13,55 @@ get('/') do
   erb(:index)
 end
 
-get('/frollicle/add_stylists') do
+get('/stylists') do
+  @stylists = Stylist.all
+  erb(:stylists)
+end
+
+get('/stylists/new') do
   erb(:stylist_form)
 end
 
-post('/frollicle/add_stylists/new') do
+post('/stylists') do
   name = params.fetch('name')
   Stylist.new({name: name, id: nil}).save
   @stylists = Stylist.all()
   erb(:success)
 end
 
-get('/frollicle/view_stylists') do
-  @stylists = Stylist.all
-  erb(:stylist_list)
-end
-
-get('/frollicle/view_stylists/:id') do
+get('/stylists/:id') do
   @stylist = Stylist.find(params[:id].to_i)
   erb(:stylist)
 end
 
-get('/frollicle/view_stylists/edit/:id') do
+get('/stylists/:id/edit') do
   @stylist = Stylist.find(params[:id].to_i)
+  @stylists = Stylist.all()
   erb(:update_stylist)
 end
 
-patch('/frollicle/view_stylists/stylist_update/:id') do
+patch('/stylists/:id') do
   @stylist = Stylist.find(params[:id].to_i)
   @stylist.update(params)
-  redirect ('/frollicle/view_stylists')
+  @stylists = Stylist.all()
+  erb(:stylists)
 end
 
-delete('/frollicle/view_stylists/delete/:id') do
+delete('/stylists/:id/delete') do
   @stylist = Stylist.find(params[:id].to_i)
   @stylist.delete
-  redirect ('/frollicle/view_stylists')
+  @stylists = Stylist.all()
+  erb(:stylists)
 end
 
 ###############Clients
 
-get("/frollicle/view_stylists/:id") do
+get("/stylists/:id") do
   @stylist = Stylist.find(params.fetch("id").to_i())
   erb(:stylist)
 end
 
-post('/frollicle/add_clients/new') do
+post('/clients') do
   name = params.fetch('name')
   stylist_id = params.fetch('stylist_id')
   @stylist = Stylist.find(stylist_id).to_i
@@ -67,19 +70,25 @@ post('/frollicle/add_clients/new') do
   erb(:success2)
 end
 
-get('/frollicle/view_clients/edit/:id') do
+get('/clients/:id/edit') do
   @client = Client.find(params[:id].to_i)
+  @stylist = Stylist.find(params.fetch("id").to_i())
   erb(:update_client)
 end
 
-patch('/frollicle/view_clients/client_update/:id') do
-  @client = Client.find(params[:id].to_i)
-  @client.update(params)
-  redirect ('/frollicle/view_stylists')
+patch('/clients/:id') do
+  name = params.fetch("name")
+  @clients = Client.all()
+  @client = Client.find(params.fetch("id").to_i())
+  @client.update({:name => name})
+  @stylists = Stylist.all()
+  erb(:stylists)
 end
 
-get('/frollicle/view_clients/delete/:id') do
+delete('/clients/:id/delete') do
   @client = Client.find(params[:id].to_i)
   @client.delete
-   redirect ('/frollicle/view_stylists')
+  @stylists = Stylist.all()
+  @clients = Client.all()
+  erb(:stylists)
 end

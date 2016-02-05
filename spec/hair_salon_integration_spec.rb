@@ -18,12 +18,13 @@ describe('hair salon pathways', {:type => :feature}) do
   describe('Adding a client route') do
     it('adds a client to a stylist') do
       test_client = Client.new({id: nil, name: "Frank Furt", stylist_id: 1}).save
-      Stylist.new({id: nil, name: "Beatrice Hairperson"}).save
-      test_stylist = Stylist.all
-      visit "/frollicle/view_stylists/#{test_stylist.id}"
+      test_stylist = Stylist.new({id: nil, name: "Beatrice Hairperson"})
+      test_stylist.save
+      visit "/stylists"
       click_link "Beatrice Hairperson"
       fill_in "name", :with => "Frank Furt"
-      expect(page).to have_content("SUPER!")
+      click_button "Submit"
+      expect(page).to have_content("SUUUPER!")
     end
   end
 end
